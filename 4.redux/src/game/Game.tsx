@@ -43,15 +43,6 @@ export class Game extends React.Component<any, IGameState> {
 
   render() {
     const board = this.state.board;
-    const winner = this.calculateWinner(board.squares);
-
-    let status;
-    if (winner) {
-      status = 'Winner: ' + winner;
-    } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-    }
-
 
     return (
       <div className="game">
@@ -62,7 +53,6 @@ export class Game extends React.Component<any, IGameState> {
           />
         </div>
         <div className="game-info">
-          <div>{status}</div>
           <button onClick={() => this.reset()}>
             Reset
           </button>

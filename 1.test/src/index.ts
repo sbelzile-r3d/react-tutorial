@@ -4,15 +4,6 @@
  * @param cashIn The input amount.
  */
 export const getChange = (amount: number): number[] => {
-  let types = [0.01, 0.05, 0.10, 0.25, 1];
-  let output = [];
-  let amountLeft = amount;
-  while (types.length > 0) {
-    let currentType = types.pop() as number;
-    output.push(Math.floor(amountLeft / currentType));
-    amountLeft = Math.round((amountLeft % currentType) * 100) / 100;
-  }
-
-  return output;
+  return [0, 0, 0, 0, 0];
 }
 
