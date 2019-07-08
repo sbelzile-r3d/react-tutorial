@@ -15,3 +15,4 @@ export const getChange = (amount: number): number[] => {
 
   return output;
 }
+
