@@ -18,7 +18,8 @@ export class BoardStore {
   reset() {
     this.board = {
       squares: Array(9).fill(''),
-      xIsNext: true
+      xIsNext: true,
+      winner: null
     }
   }
 

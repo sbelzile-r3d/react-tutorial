@@ -116,4 +116,4 @@ export const visibilityFilter = (state = initialState, action) => {
 
 ## Exercise
 
-Modifier le jeu de tic-tac-to pour l'état de son système soit géré par `Redux`.
+Complétez le code du jeu de tic-tac-to pour l'état de son système soit géré par `Redux`. Il ne manque que le code du `BoardReducer`.

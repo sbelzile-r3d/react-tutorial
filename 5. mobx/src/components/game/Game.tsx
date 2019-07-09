@@ -1,7 +1,6 @@
 import React from "react";
 import { Board } from "../board/Board";
 import "./Game.scss"
-import { InfoSection } from '../info-section/InfoSection';
 
 export class Game extends React.Component {
   render() {
@@ -11,7 +10,6 @@ export class Game extends React.Component {
           <Board />
         </div>
         <div className="game-info">
-          <InfoSection />
         </div>
       </div>
     );

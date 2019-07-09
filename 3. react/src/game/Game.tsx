@@ -1,7 +1,6 @@
 import React from "react";
 import { Board } from "../board/Board";
-import "./Game.scss"
-import { Clock } from '../clock/Clock';
+import "./Game.scss";
 import { calculateWinner, getWinningLine } from "../utils/calculateWinner";
 
 export interface IBoardState {
@@ -78,12 +77,10 @@ export class Game extends React.Component<any, IGameState> {
         <div className="game-board">
           <Board
             squares={current.squares}
-            winningLine={getWinningLine(current.squares) || []}
             onClick={(i) => this.handleClick(i)}
           />
         </div>
         <div className="game-info">
-          <Clock />
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>
