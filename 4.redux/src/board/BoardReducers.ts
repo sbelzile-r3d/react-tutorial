@@ -20,12 +20,14 @@ export const boardReducer = (state: IBoardState = INITIAL_STATE, action: IReduxA
       }
     case BoardActions.clickSquare:
       const squares = state.squares.slice();
-      if (action.payload && action.payload.id) {
+      let xIsNext = state.xIsNext;
+      if (!squares[action.payload.id]) {
         squares[action.payload.id] = state.xIsNext ? 'X' : 'O';
+        xIsNext = !xIsNext;
       }
       return {
         squares,
-        xIsNext: !state.xIsNext
+        xIsNext
       }
     default:
       return state;

@@ -15,7 +15,7 @@ export const resetBoard = (): IReduxAction<IBoardActionPayload> => ({
 });
 
 export const clickSquare = (id: number): IReduxAction<IBoardActionPayload> => ({
-  type: BoardActions.reset,
+  type: BoardActions.clickSquare,
   payload: {
     id
   }

@@ -1,23 +1,31 @@
 import React from "react";
 import { Square } from "../square/Square";
 import "./Board.scss";
+import { calculateWinner } from "../utils/calculateWinner";
 
 export interface IBoardStateProps {
-  squares: string[]
+  squares?: string[]
 }
 
 export interface IBoardDispatchProps {
-  onClick: (i: number) => void
+  onClick?: (i: number) => void
 }
 
 export interface IBoardProps extends IBoardStateProps, IBoardDispatchProps {}
 
 export class Board extends React.Component<IBoardProps> {
-  renderSquare(i: number) {
+  handleClick(squareId: number) {
+    const winner = calculateWinner(this.props.squares || Array(9));
+    if (!winner && this.props.onClick) {
+      this.props.onClick(squareId)
+    }
+  }
+
+  renderSquare(squareId: number) {
     return (
       <Square
-        value={this.props.squares[i]}
-        onClick={() => this.props.onClick(i)}
+        value={this.props.squares ? this.props.squares[squareId] : ''}
+        onClick={() => this.handleClick(squareId)}
       />
     );
   }

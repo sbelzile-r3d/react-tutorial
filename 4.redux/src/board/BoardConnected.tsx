@@ -1,5 +1,5 @@
 import { IApplicationState } from "../rootReducer";
-import { IBoardStateProps, IBoardDispatchProps } from "./Board";
+import { IBoardStateProps, IBoardDispatchProps, Board, IBoardProps } from "./Board";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { clickSquare } from "./BoardActions";
@@ -16,4 +16,4 @@ const mapDispatchToProps = (dispatch: Dispatch): IBoardDispatchProps => {
   };
 }
 
-export const BoardConnected = connect(mapStateToProps, mapDispatchToProps)
+export const BoardConnected: React.ComponentClass<IBoardProps> = connect(mapStateToProps, mapDispatchToProps)(Board);
