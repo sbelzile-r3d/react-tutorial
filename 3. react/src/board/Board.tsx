@@ -4,6 +4,7 @@ import "./Board.scss";
 
 export interface IBoardProps {
   squares: string[],
+  winningLine: number[],
   onClick: (i: number) => void
 }
 
@@ -12,6 +13,7 @@ export class Board extends React.Component<IBoardProps> {
     return (
       <Square
         value={this.props.squares[i]}
+        isWinning={this.props.winningLine.indexOf(i) >= 0}
         onClick={() => this.props.onClick(i)}
       />
     );
