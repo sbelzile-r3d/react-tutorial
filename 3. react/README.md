@@ -128,6 +128,12 @@ this.setState((state, props) => ({
   componentDidCatch() // Called on rendering errors
 ```
 
+# Exercise - Component Lifecycle
+
+Dans le projet d'exemple, on voudrait afficher l'heure actuelle. Créez et affichez un composant qui affiche l'heure actuelle.
+
+# Plus de théorie
+
 ## Gérer les événements
 
 ```tsx
@@ -202,10 +208,6 @@ render() {
 
 - [High-Order-Components](https://reactjs.org/docs/higher-order-components.html)
 
-## Exercises
+## Exercise - React
 
-### Component Lifecycle
-Dans le projet d'exemple, on voudrait afficher l'heure actuelle. Créez et affichez un composant qui affiche l'heure actuelle.
-
-### React pure
 Seb est vraiment mauvais en tic-tac-to. Il ne comprend pas pourquoi Marc-André est toujours déclaré vainqueur. Pour l'aider à comprendre, on veut mettre de l'emphase sur la ligne qui a permis à Marc-André de le battre. Affichez en rouge la ligne gagnante.
