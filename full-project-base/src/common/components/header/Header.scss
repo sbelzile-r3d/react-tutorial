@@ -1,0 +1,15 @@
+@import "~@blueprintjs/core/lib/scss/variables";
+
+.bp3-navbar {
+  background: $blue1;
+  position: sticky;
+  top: 0;
+}
+
+.bp3-navbar-heading {
+  display: flex;
+}
+
+.r3d-logo {
+  height: 35px;
+}
