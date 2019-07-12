@@ -3,10 +3,22 @@ import { IKeycloak } from '../../authentication/keycloak/IKeycloak';
 import { KeycloakWrapper } from '../../authentication/keycloak/KeycloakWrapper';
 import { AuthenticationService, IAuthenticationService } from '../../authentication/services/AuthenticationService';
 
-const container = new Container();
-container.bind<IKeycloak>(KeycloakWrapper).to(KeycloakWrapper).inSingletonScope();
-container.bind<IAuthenticationService>(AuthenticationService).toSelf().inSingletonScope();
-
-export {
-  container
+export const initContainer = (): Promise<Container> => {
+  return new Promise<Container>((resolve, reject) => {
+    const container = new Container();
+    const keycloak = new KeycloakWrapper();
+    keycloak.init()
+        .then(isUserAuthenticated => {
+          if (isUserAuthenticated) {
+            return keycloak.loadUserProfile();
+          }
+          return null;
+        })
+        .then(() => {
+          container.bind<IKeycloak>(KeycloakWrapper).toConstantValue(keycloak);
+          container.bind<IAuthenticationService>(AuthenticationService).toSelf().inSingletonScope();
+          resolve(container);
+        })
+        .catch(error => reject(error));
+  });
 };

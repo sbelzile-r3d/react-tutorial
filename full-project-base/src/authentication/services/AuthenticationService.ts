@@ -15,12 +15,12 @@ export class AuthenticationService {
     return this.keycloak.authenticated;
   }
 
+  get userProfile(): Keycloak.KeycloakProfile {
+    return this.keycloak.userProfile;
+  }
+
   login(): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-      this.keycloak.login()
-        .success(() => resolve())
-        .error(error => reject(error));
-    });
+    return this.keycloak.login();
   }
 
   logout(): void {

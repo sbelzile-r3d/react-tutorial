@@ -6,12 +6,16 @@ import { SideNavigation } from './common/components/side-navigation/SideNavigati
 import { Routes } from './common/router/Routes';
 import { Provider } from 'mobx-react';
 import { AuthenticationService } from './authentication/services/AuthenticationService';
-import { container } from './common/injection/inversify.config';
+import { Container } from 'inversify';
 
-const App: React.FC = () => {
+export interface IAppProps {
+  container: Container;
+}
+
+const App: React.FC<IAppProps> = (props: IAppProps) => {
   return (
     <Provider
-      authenticationService={container.resolve<AuthenticationService>(AuthenticationService)}
+      authenticationService={props.container.resolve<AuthenticationService>(AuthenticationService)}
     >
       <div className='App'>
         <BrowserRouter>

@@ -12,7 +12,8 @@ export interface IUserMenuProps {
 @inject('authenticationService')
 export class UserMenu extends React.Component<IUserMenuProps> {
   getGravatarImageUrl(): string {
-    return `https://www.gravatar.com/avatar/${this.getImageHash('sebastien.belzile@r3d.com')}?d=mp`;
+    const userEmail = this.props.authenticationService.userProfile.email;
+    return `https://www.gravatar.com/avatar/${this.getImageHash(userEmail)}?d=mp`;
   }
 
   getImageHash(email: string) {
@@ -24,11 +25,11 @@ export class UserMenu extends React.Component<IUserMenuProps> {
   }
 
   render() {
-    return (
+    return this.props.authenticationService.userProfile ? (
       <Popover content={this.userMenuOptions()}>
         <img className='user-avatar' src={this.getGravatarImageUrl()} height='40px' alt='user profile' />
       </Popover>
-    );
+    ) : null;
   }
 
   userMenuOptions() {
